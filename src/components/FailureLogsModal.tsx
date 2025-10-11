@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, AlertCircle, Calendar, Trash2 } from 'lucide-react'
 import { supabase } from '@/lib/supabase'
@@ -29,9 +29,9 @@ export function FailureLogsModal({ isOpen, onClose }: FailureLogsModalProps) {
     if (isOpen && user) {
       loadFailureLogs()
     }
-  }, [isOpen, user])
+  }, [isOpen, user, loadFailureLogs])
 
-  const loadFailureLogs = async () => {
+  const loadFailureLogs = useCallback(async () => {
     if (!user) return
 
     setIsLoading(true)
@@ -53,7 +53,7 @@ export function FailureLogsModal({ isOpen, onClose }: FailureLogsModalProps) {
     } finally {
       setIsLoading(false)
     }
-  }
+  }, [user])
 
   const deleteFailureLog = async (logId: string) => {
     try {

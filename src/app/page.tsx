@@ -28,7 +28,7 @@ function TimelineApp() {
     getLevel
   } = useSupabaseTimeline()
   
-  const [isEditMode, setIsEditMode] = useState(true) // Always enable edit mode for personal tracking
+  const isEditMode = true // Always enable edit mode for personal tracking
 
   // Show auth loading state
   if (authLoading) {

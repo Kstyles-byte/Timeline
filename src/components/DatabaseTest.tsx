@@ -11,7 +11,7 @@ export function DatabaseTest() {
 
     try {
       // Test basic connection
-      const { data: testData, error: testError } = await supabase
+      const { error: testError } = await supabase
         .from('profiles')
         .select('count')
         .limit(1)
@@ -72,15 +72,6 @@ export function DatabaseTest() {
     setResults(newResults)
   }
 
-  const createTables = async () => {
-    try {
-      // This would recreate the tables - but we should be careful
-      setResults(['🔄 Attempting to recreate tables...'])
-      // We'll add table creation logic here if needed
-    } catch (error) {
-      setResults([`❌ Error creating tables: ${error}`])
-    }
-  }
 
   return (
     <div className="fixed top-20 left-4 bg-white p-4 rounded-lg shadow-lg z-50 max-w-md">

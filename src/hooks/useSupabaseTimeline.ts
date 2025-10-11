@@ -48,7 +48,8 @@ export function useSupabaseTimeline() {
     } else {
       setIsLoaded(true)
     }
-  }, [user]) // loadAllData is defined within the hook, so it's safe to omit
+  }, [user]) // eslint-disable-line react-hooks/exhaustive-deps
+  // loadAllData is defined within this hook and doesn't need to be in dependencies
 
   const loadAllData = async () => {
     try {
