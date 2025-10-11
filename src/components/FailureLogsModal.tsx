@@ -25,12 +25,6 @@ export function FailureLogsModal({ isOpen, onClose }: FailureLogsModalProps) {
   const [failureLogs, setFailureLogs] = useState<FailureLog[]>([])
   const [isLoading, setIsLoading] = useState(false)
 
-  useEffect(() => {
-    if (isOpen && user) {
-      loadFailureLogs()
-    }
-  }, [isOpen, user, loadFailureLogs])
-
   const loadFailureLogs = useCallback(async () => {
     if (!user) return
 
@@ -54,6 +48,12 @@ export function FailureLogsModal({ isOpen, onClose }: FailureLogsModalProps) {
       setIsLoading(false)
     }
   }, [user])
+
+  useEffect(() => {
+    if (isOpen && user) {
+      loadFailureLogs()
+    }
+  }, [isOpen, user, loadFailureLogs])
 
   const deleteFailureLog = async (logId: string) => {
     try {

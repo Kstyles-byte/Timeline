@@ -1,6 +1,5 @@
 'use client'
 
-import { useState } from 'react'
 import { Header } from '@/components/Header'
 import { LevelDisplay } from '@/components/LevelDisplay'
 import { NonNegotiables } from '@/components/NonNegotiables'
