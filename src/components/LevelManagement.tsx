@@ -1,16 +1,27 @@
 'use client'
 
-import { Trophy, Check, Clock, Lock } from 'lucide-react'
+import { useState } from 'react'
+import { Trophy, Check, Clock, Lock, Settings } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { cn } from '@/lib/utils'
-import { levels } from '@/lib/levels'
+import { LevelManagementModal } from './LevelManagementModal'
+
+interface Level {
+  id: number
+  name: string
+  description: string
+}
 
 interface LevelManagementProps {
   currentLevel: number
   levelsCompleted: number
+  levels?: Level[]
+  isEditMode?: boolean
+  onUpdateLevel?: (levelId: number, name: string, description: string) => Promise<void>
 }
 
-export function LevelManagement({ currentLevel }: LevelManagementProps) {
+export function LevelManagement({ currentLevel, levels = [], isEditMode = false, onUpdateLevel }: LevelManagementProps) {
+  const [showModal, setShowModal] = useState(false)
   const levelNumbers = [1, 2, 3, 4]
 
   return (
@@ -19,10 +30,24 @@ export function LevelManagement({ currentLevel }: LevelManagementProps) {
       animate={{ opacity: 1, y: 0 }}
       className="bg-white rounded-3xl p-8 mb-8 shadow-2xl"
     >
-      <h3 className="text-2xl font-semibold text-gray-800 mb-6 flex items-center gap-3">
-        <Trophy className="text-yellow-500" size={24} />
-        Level Management
-      </h3>
+      <div className="flex items-center justify-between mb-6">
+        <h3 className="text-2xl font-semibold text-gray-800 flex items-center gap-3">
+          <Trophy className="text-yellow-500" size={24} />
+          Level Management
+        </h3>
+        
+        {isEditMode && onUpdateLevel && (
+          <motion.button
+            onClick={() => setShowModal(true)}
+            className="flex items-center gap-2 px-4 py-2 bg-yellow-500 text-white rounded-xl hover:bg-yellow-600 transition-colors"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Settings size={16} />
+            <span className="text-sm font-medium">Manage All Levels</span>
+          </motion.button>
+        )}
+      </div>
       
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {levelNumbers.map((levelNumber) => {
@@ -55,7 +80,7 @@ export function LevelManagement({ currentLevel }: LevelManagementProps) {
               
               <div className="flex-1">
                 <div className="font-semibold text-lg">
-                  {levels[levelNumber]?.name || 'Unknown'}
+                  {levels.find(l => l.id === levelNumber)?.name || 'Unknown'}
                 </div>
                 <div className="flex items-center gap-2 mt-1">
                   {isCompleted && <Check size={16} />}
@@ -67,6 +92,15 @@ export function LevelManagement({ currentLevel }: LevelManagementProps) {
           )
         })}
       </div>
+      
+      {isEditMode && onUpdateLevel && (
+        <LevelManagementModal
+          isOpen={showModal}
+          onClose={() => setShowModal(false)}
+          levels={levels}
+          onUpdateLevel={onUpdateLevel}
+        />
+      )}
     </motion.div>
   )
 }

@@ -18,6 +18,7 @@ function TimelineApp() {
   const { user, isLoading: authLoading, isAdmin } = useAuth()
   const {
     timelineData,
+    levels,
     handleSuccess,
     handleFailure,
     isLoaded,
@@ -73,6 +74,10 @@ function TimelineApp() {
 
   const handleNonNegotiablesUpdate = async (items: string[]) => {
     await updateNonNegotiables(timelineData.currentLevel, items)
+  }
+
+  const handleAnyLevelUpdate = async (levelId: number, name: string, description: string) => {
+    await updateLevel(levelId, name, description)
   }
 
   return (
@@ -132,6 +137,9 @@ function TimelineApp() {
           <LevelManagement 
             currentLevel={timelineData.currentLevel}
             levelsCompleted={timelineData.levelsCompleted}
+            levels={levels}
+            isEditMode={isEditMode && isAdmin}
+            onUpdateLevel={handleAnyLevelUpdate}
           />
           
           <Stats 

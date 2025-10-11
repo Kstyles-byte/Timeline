@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { AlertTriangle, Edit, Save, X, Plus, Trash2 } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 
@@ -14,6 +14,11 @@ interface NonNegotiablesProps {
 export function NonNegotiables({ nonNegotiables, isEditMode, onUpdate }: NonNegotiablesProps) {
   const [isEditing, setIsEditing] = useState(false)
   const [editItems, setEditItems] = useState<string[]>(nonNegotiables)
+
+  // Update editItems when nonNegotiables prop changes
+  React.useEffect(() => {
+    setEditItems([...nonNegotiables])
+  }, [nonNegotiables])
   const [isSaving, setIsSaving] = useState(false)
 
   const handleEdit = () => {

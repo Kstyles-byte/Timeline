@@ -1,9 +1,10 @@
 'use client'
 
 import { useState } from 'react'
-import { Settings, LogOut, Edit, User } from 'lucide-react'
+import { Settings, LogOut, Edit, User, FileText } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { useAuth } from '@/contexts/AuthContext'
+import { FailureLogsModal } from './FailureLogsModal'
 
 interface AdminToolbarProps {
   isEditMode: boolean
@@ -13,6 +14,7 @@ interface AdminToolbarProps {
 export function AdminToolbar({ isEditMode, onToggleEditMode }: AdminToolbarProps) {
   const { user, isAdmin, signOut } = useAuth()
   const [showUserMenu, setShowUserMenu] = useState(false)
+  const [showFailureLogs, setShowFailureLogs] = useState(false)
 
   const handleSignOut = async () => {
     try {
@@ -87,6 +89,18 @@ export function AdminToolbar({ isEditMode, onToggleEditMode }: AdminToolbarProps
             
             <motion.button
               onClick={() => {
+                setShowFailureLogs(true)
+                setShowUserMenu(false)
+              }}
+              className="w-full flex items-center gap-3 px-4 py-3 text-white hover:bg-white/10 transition-colors text-left"
+              whileHover={{ x: 5 }}
+            >
+              <FileText size={18} />
+              <span className="text-sm">View Failure Logs</span>
+            </motion.button>
+            
+            <motion.button
+              onClick={() => {
                 handleSignOut()
                 setShowUserMenu(false)
               }}
@@ -107,6 +121,11 @@ export function AdminToolbar({ isEditMode, onToggleEditMode }: AdminToolbarProps
           onClick={() => setShowUserMenu(false)}
         />
       )}
+      
+      <FailureLogsModal
+        isOpen={showFailureLogs}
+        onClose={() => setShowFailureLogs(false)}
+      />
     </motion.div>
   )
 }

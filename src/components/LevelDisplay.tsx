@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Edit, Save, X } from 'lucide-react'
 
@@ -23,6 +23,12 @@ export function LevelDisplay({ currentLevel, daysCompleted, levelData, isEditMod
   const [editName, setEditName] = useState(levelData?.name || '')
   const [editDescription, setEditDescription] = useState(levelData?.description || '')
   const [isSaving, setIsSaving] = useState(false)
+
+  // Update edit state when levelData changes
+  useEffect(() => {
+    setEditName(levelData?.name || '')
+    setEditDescription(levelData?.description || '')
+  }, [levelData])
 
   const progress = (daysCompleted / 14) * 100
   const radius = 54
