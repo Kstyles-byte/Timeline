@@ -1,7 +1,7 @@
 'use client'
 
-import { Activity } from 'lucide-react'
 import { motion } from 'framer-motion'
+import { BarChart3 } from 'lucide-react'
 
 export function Header() {
   return (
@@ -16,7 +16,7 @@ export function Header() {
         animate={{ scale: 1 }}
         transition={{ delay: 0.2 }}
       >
-        <Activity className="text-yellow-400" size={48} />
+        <BarChart3 className="text-yellow-400" size={48} />
         The Timeline
       </motion.h1>
       <motion.p 
