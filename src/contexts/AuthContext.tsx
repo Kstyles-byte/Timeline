@@ -67,6 +67,23 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
       if (error) {
         console.error('Error checking admin status:', error)
+        // If profile doesn't exist, create it
+        if (error.code === 'PGRST116') {
+          const user = await supabase.auth.getUser()
+          if (user.data.user?.email) {
+            const { error: insertError } = await supabase
+              .from('profiles')
+              .insert({
+                id: userId,
+                email: user.data.user.email,
+                is_admin: user.data.user.email === 'odoemenakamsy12@gmail.com' // Make this email admin automatically
+              })
+            
+            if (!insertError) {
+              setIsAdmin(user.data.user.email === 'odoemenakamsy12@gmail.com')
+            }
+          }
+        }
         return
       }
 

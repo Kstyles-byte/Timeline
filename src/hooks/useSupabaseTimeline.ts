@@ -64,57 +64,88 @@ export function useSupabaseTimeline() {
   const loadTimelineData = async () => {
     if (!user) return
 
-    const { data, error } = await supabase
-      .from('timeline_data')
-      .select('*')
-      .eq('user_id', user.id)
-      .single()
+    try {
+      const { data, error } = await supabase
+        .from('timeline_data')
+        .select('*')
+        .eq('user_id', user.id)
+        .single()
 
-    if (error && error.code !== 'PGRST116') { // PGRST116 is "not found" error
+      if (error && error.code !== 'PGRST116') { // PGRST116 is "not found" error
+        console.error('Error loading timeline data:', error)
+        // Create default timeline data if it doesn't exist
+        const { error: insertError } = await supabase
+          .from('timeline_data')
+          .insert({
+            user_id: user.id,
+            current_level: 1,
+            days_completed: 0,
+            current_streak: 0,
+            levels_completed: 0,
+            total_restarts: 0
+          })
+        
+        if (insertError) {
+          console.error('Error creating timeline data:', insertError)
+        }
+        return
+      }
+
+      if (data) {
+        setTimelineData({
+          currentLevel: data.current_level,
+          daysCompleted: data.days_completed,
+          currentStreak: data.current_streak,
+          levelsCompleted: data.levels_completed,
+          totalRestarts: data.total_restarts
+        })
+      }
+    } catch (error) {
       console.error('Error loading timeline data:', error)
-      return
-    }
-
-    if (data) {
-      setTimelineData({
-        currentLevel: data.current_level,
-        daysCompleted: data.days_completed,
-        currentStreak: data.current_streak,
-        levelsCompleted: data.levels_completed,
-        totalRestarts: data.total_restarts
-      })
     }
   }
 
   const loadLevels = async () => {
-    const { data, error } = await supabase
-      .from('levels')
-      .select('*')
-      .order('id')
+    try {
+      const { data, error } = await supabase
+        .from('levels')
+        .select('*')
+        .order('id')
 
-    if (error) {
+      if (error) {
+        console.error('Error loading levels:', error)
+        return
+      }
+
+      if (data) {
+        setLevels(data)
+      } else {
+        console.warn('No levels data returned from database')
+      }
+    } catch (error) {
       console.error('Error loading levels:', error)
-      return
-    }
-
-    if (data) {
-      setLevels(data)
     }
   }
 
   const loadNonNegotiables = async () => {
-    const { data, error } = await supabase
-      .from('non_negotiables')
-      .select('*')
-      .order('level_id, order_index')
+    try {
+      const { data, error } = await supabase
+        .from('non_negotiables')
+        .select('*')
+        .order('level_id, order_index')
 
-    if (error) {
+      if (error) {
+        console.error('Error loading non-negotiables:', error)
+        return
+      }
+
+      if (data) {
+        setNonNegotiables(data)
+      } else {
+        console.warn('No non-negotiables data returned from database')
+      }
+    } catch (error) {
       console.error('Error loading non-negotiables:', error)
-      return
-    }
-
-    if (data) {
-      setNonNegotiables(data)
     }
   }
 
