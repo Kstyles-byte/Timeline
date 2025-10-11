@@ -1,18 +1,13 @@
 'use client'
 
 import { useState } from 'react'
-import { Settings, LogOut, Edit, User, FileText } from 'lucide-react'
+import { LogOut, User, FileText } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { useAuth } from '@/contexts/AuthContext'
 import { FailureLogsModal } from './FailureLogsModal'
 
-interface AdminToolbarProps {
-  isEditMode: boolean
-  onToggleEditMode: () => void
-}
-
-export function AdminToolbar({ isEditMode, onToggleEditMode }: AdminToolbarProps) {
-  const { user, isAdmin, signOut } = useAuth()
+export function UserToolbar() {
+  const { user, signOut } = useAuth()
   const [showUserMenu, setShowUserMenu] = useState(false)
   const [showFailureLogs, setShowFailureLogs] = useState(false)
 
@@ -41,9 +36,6 @@ export function AdminToolbar({ isEditMode, onToggleEditMode }: AdminToolbarProps
           <span className="hidden sm:block text-sm font-medium">
             {user?.email?.split('@')[0]}
           </span>
-          {isAdmin && (
-            <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
-          )}
         </motion.button>
 
         {showUserMenu && (
@@ -57,35 +49,7 @@ export function AdminToolbar({ isEditMode, onToggleEditMode }: AdminToolbarProps
               <p className="text-white text-sm font-medium truncate">
                 {user?.email}
               </p>
-              {isAdmin && (
-                <p className="text-yellow-400 text-xs font-medium">
-                  Admin
-                </p>
-              )}
             </div>
-            
-            {isAdmin && (
-              <motion.button
-                onClick={() => {
-                  onToggleEditMode()
-                  setShowUserMenu(false)
-                }}
-                className="w-full flex items-center gap-3 px-4 py-3 text-white hover:bg-white/10 transition-colors text-left"
-                whileHover={{ x: 5 }}
-              >
-                {isEditMode ? (
-                  <>
-                    <Settings size={18} />
-                    <span className="text-sm">Exit Edit Mode</span>
-                  </>
-                ) : (
-                  <>
-                    <Edit size={18} />
-                    <span className="text-sm">Enter Edit Mode</span>
-                  </>
-                )}
-              </motion.button>
-            )}
             
             <motion.button
               onClick={() => {

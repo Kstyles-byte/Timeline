@@ -14,12 +14,15 @@ interface TimelineData {
 
 interface Level {
   id: number
+  user_id: string
+  level_number: number
   name: string
   description: string
 }
 
 interface NonNegotiable {
   id: string
+  user_id: string
   level_id: number
   text: string
   order_index: number
@@ -106,11 +109,14 @@ export function useSupabaseTimeline() {
   }
 
   const loadLevels = async () => {
+    if (!user) return
+    
     try {
       const { data, error } = await supabase
         .from('levels')
         .select('*')
-        .order('id')
+        .eq('user_id', user.id)
+        .order('level_number')
 
       if (error) {
         console.error('Error loading levels:', error)
@@ -128,10 +134,13 @@ export function useSupabaseTimeline() {
   }
 
   const loadNonNegotiables = async () => {
+    if (!user) return
+    
     try {
       const { data, error } = await supabase
         .from('non_negotiables')
         .select('*')
+        .eq('user_id', user.id)
         .order('level_id, order_index')
 
       if (error) {
@@ -217,11 +226,14 @@ export function useSupabaseTimeline() {
     })
   }
 
-  const updateLevel = async (levelId: number, name: string, description: string) => {
+  const updateLevel = async (levelNumber: number, name: string, description: string) => {
+    if (!user) return
+    
     const { error } = await supabase
       .from('levels')
       .update({ name, description })
-      .eq('id', levelId)
+      .eq('user_id', user.id)
+      .eq('level_number', levelNumber)
 
     if (error) {
       console.error('Error updating level:', error)
@@ -231,12 +243,19 @@ export function useSupabaseTimeline() {
     await loadLevels()
   }
 
-  const updateNonNegotiables = async (levelId: number, items: string[]) => {
+  const updateNonNegotiables = async (levelNumber: number, items: string[]) => {
+    if (!user) return
+    
+    // Get the level ID for this level number
+    const level = levels.find(l => l.level_number === levelNumber)
+    if (!level) return
+    
     // Delete existing non-negotiables for this level
     const { error: deleteError } = await supabase
       .from('non_negotiables')
       .delete()
-      .eq('level_id', levelId)
+      .eq('level_id', level.id)
+      .eq('user_id', user.id)
 
     if (deleteError) {
       console.error('Error deleting non-negotiables:', deleteError)
@@ -245,7 +264,8 @@ export function useSupabaseTimeline() {
 
     // Insert new non-negotiables
     const insertData = items.map((text, index) => ({
-      level_id: levelId,
+      user_id: user.id,
+      level_id: level.id,
       text,
       order_index: index + 1
     }))
@@ -263,16 +283,19 @@ export function useSupabaseTimeline() {
   }
 
   // Get non-negotiables for a specific level
-  const getNonNegotiablesForLevel = (levelId: number) => {
+  const getNonNegotiablesForLevel = (levelNumber: number) => {
+    const level = levels.find(l => l.level_number === levelNumber)
+    if (!level) return []
+    
     return nonNegotiables
-      .filter(nn => nn.level_id === levelId)
+      .filter(nn => nn.level_id === level.id)
       .sort((a, b) => a.order_index - b.order_index)
       .map(nn => nn.text)
   }
 
   // Get level data
-  const getLevel = (levelId: number) => {
-    return levels.find(level => level.id === levelId)
+  const getLevel = (levelNumber: number) => {
+    return levels.find(level => level.level_number === levelNumber)
   }
 
   return {

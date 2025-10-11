@@ -9,13 +9,13 @@ import { TimelineGrid } from '@/components/TimelineGrid'
 import { LevelManagement } from '@/components/LevelManagement'
 import { Stats } from '@/components/Stats'
 import { Auth } from '@/components/Auth'
-import { AdminToolbar } from '@/components/AdminToolbar'
+import { UserToolbar } from '@/components/AdminToolbar'
 import { AuthProvider, useAuth } from '@/contexts/AuthContext'
 import { useSupabaseTimeline } from '@/hooks/useSupabaseTimeline'
 import { motion } from 'framer-motion'
 
 function TimelineApp() {
-  const { user, isLoading: authLoading, isAdmin } = useAuth()
+  const { user, isLoading: authLoading } = useAuth()
   const {
     timelineData,
     levels,
@@ -28,7 +28,7 @@ function TimelineApp() {
     getLevel
   } = useSupabaseTimeline()
   
-  const [isEditMode, setIsEditMode] = useState(false)
+  const [isEditMode, setIsEditMode] = useState(true) // Always enable edit mode for personal tracking
 
   // Show auth loading state
   if (authLoading) {
@@ -82,28 +82,23 @@ function TimelineApp() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-600 via-purple-700 to-blue-800 relative">
-      <AdminToolbar
-        isEditMode={isEditMode}
-        onToggleEditMode={() => setIsEditMode(!isEditMode)}
-      />
+      <UserToolbar />
       
       <div className="container mx-auto max-w-6xl px-6 py-8">
         <Header />
         
-        {isEditMode && isAdmin && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="bg-yellow-400/20 border border-yellow-400/30 rounded-2xl p-4 mb-8 backdrop-blur-sm"
-          >
-            <div className="flex items-center gap-3">
-              <div className="w-3 h-3 bg-yellow-400 rounded-full animate-pulse"></div>
-              <span className="text-yellow-100 font-medium text-lg">
-                Edit Mode Active - You can now modify levels and non-negotiables
-              </span>
-            </div>
-          </motion.div>
-        )}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="bg-teal-400/20 border border-teal-400/30 rounded-2xl p-4 mb-8 backdrop-blur-sm"
+        >
+          <div className="flex items-center gap-3">
+            <div className="w-3 h-3 bg-teal-400 rounded-full animate-pulse"></div>
+            <span className="text-teal-100 font-medium text-lg">
+              Personal Timeline - Customize your levels and track your progress
+            </span>
+          </div>
+        </motion.div>
         
         <motion.div
           initial={{ opacity: 0 }}
@@ -114,14 +109,14 @@ function TimelineApp() {
             currentLevel={timelineData.currentLevel}
             daysCompleted={timelineData.daysCompleted}
             levelData={currentLevelData}
-            isEditMode={isEditMode && isAdmin}
+            isEditMode={isEditMode}
             onUpdate={handleLevelUpdate}
           />
           
           <NonNegotiables 
             currentLevel={timelineData.currentLevel}
             nonNegotiables={currentNonNegotiables}
-            isEditMode={isEditMode && isAdmin}
+            isEditMode={isEditMode}
             onUpdate={handleNonNegotiablesUpdate}
           />
           
@@ -138,7 +133,7 @@ function TimelineApp() {
             currentLevel={timelineData.currentLevel}
             levelsCompleted={timelineData.levelsCompleted}
             levels={levels}
-            isEditMode={isEditMode && isAdmin}
+            isEditMode={isEditMode}
             onUpdateLevel={handleAnyLevelUpdate}
           />
           
