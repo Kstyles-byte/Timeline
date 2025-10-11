@@ -1,19 +1,58 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { levels } from '@/lib/levels'
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Edit, Save, X } from 'lucide-react'
+
+interface Level {
+  id: number
+  name: string
+  description: string
+}
 
 interface LevelDisplayProps {
   currentLevel: number
   daysCompleted: number
+  levelData?: Level
+  isEditMode: boolean
+  onUpdate: (name: string, description: string) => Promise<void>
 }
 
-export function LevelDisplay({ currentLevel, daysCompleted }: LevelDisplayProps) {
+export function LevelDisplay({ currentLevel, daysCompleted, levelData, isEditMode, onUpdate }: LevelDisplayProps) {
+  const [isEditing, setIsEditing] = useState(false)
+  const [editName, setEditName] = useState(levelData?.name || '')
+  const [editDescription, setEditDescription] = useState(levelData?.description || '')
+  const [isSaving, setIsSaving] = useState(false)
+
   const progress = (daysCompleted / 14) * 100
   const radius = 54
   const circumference = radius * 2 * Math.PI
   const strokeDasharray = `${circumference} ${circumference}`
   const strokeDashoffset = circumference - (progress / 100) * circumference
+
+  const handleEdit = () => {
+    setEditName(levelData?.name || '')
+    setEditDescription(levelData?.description || '')
+    setIsEditing(true)
+  }
+
+  const handleSave = async () => {
+    setIsSaving(true)
+    try {
+      await onUpdate(editName, editDescription)
+      setIsEditing(false)
+    } catch (error) {
+      console.error('Error updating level:', error)
+    } finally {
+      setIsSaving(false)
+    }
+  }
+
+  const handleCancel = () => {
+    setEditName(levelData?.name || '')
+    setEditDescription(levelData?.description || '')
+    setIsEditing(false)
+  }
 
   return (
     <motion.div 
@@ -21,18 +60,93 @@ export function LevelDisplay({ currentLevel, daysCompleted }: LevelDisplayProps)
       animate={{ opacity: 1, scale: 1 }}
       className="bg-white rounded-3xl p-8 mb-8 shadow-2xl flex justify-between items-center flex-wrap gap-6"
     >
-      <div className="level-info">
-        <motion.h2 
-          className="text-4xl font-bold text-indigo-600 mb-3"
-          key={currentLevel}
-          initial={{ scale: 0.8 }}
-          animate={{ scale: 1 }}
-        >
-          Level {currentLevel}
-        </motion.h2>
-        <p className="text-lg text-gray-600">
-          {levels[currentLevel]?.description || 'Unknown level'}
-        </p>
+      <div className="level-info flex-1">
+        <div className="flex items-center justify-between mb-3">
+          <motion.h2 
+            className="text-4xl font-bold text-indigo-600"
+            key={currentLevel}
+            initial={{ scale: 0.8 }}
+            animate={{ scale: 1 }}
+          >
+            Level {currentLevel}
+            {isEditing && (
+              <span className="text-lg ml-3">- </span>
+            )}
+            {isEditing ? (
+              <input
+                type="text"
+                value={editName}
+                onChange={(e) => setEditName(e.target.value)}
+                className="text-2xl font-bold text-indigo-600 bg-transparent border-b-2 border-indigo-300 focus:border-indigo-500 focus:outline-none ml-2"
+                placeholder="Level name..."
+              />
+            ) : (
+              <span className="text-2xl ml-3">{levelData?.name}</span>
+            )}
+          </motion.h2>
+          
+          {isEditMode && !isEditing && (
+            <motion.button
+              onClick={handleEdit}
+              className="flex items-center gap-2 px-3 py-2 bg-indigo-500 text-white rounded-xl hover:bg-indigo-600 transition-colors text-sm"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Edit size={16} />
+              Edit
+            </motion.button>
+          )}
+          
+          {isEditing && (
+            <div className="flex gap-2">
+              <motion.button
+                onClick={handleSave}
+                disabled={isSaving}
+                className="flex items-center gap-2 px-3 py-2 bg-green-500 text-white rounded-xl hover:bg-green-600 transition-colors text-sm disabled:opacity-50"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Save size={16} />
+                {isSaving ? 'Saving...' : 'Save'}
+              </motion.button>
+              <motion.button
+                onClick={handleCancel}
+                className="flex items-center gap-2 px-3 py-2 bg-gray-500 text-white rounded-xl hover:bg-gray-600 transition-colors text-sm"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <X size={16} />
+                Cancel
+              </motion.button>
+            </div>
+          )}
+        </div>
+        
+        <AnimatePresence mode="wait">
+          {isEditing ? (
+            <motion.textarea
+              key="editing"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              value={editDescription}
+              onChange={(e) => setEditDescription(e.target.value)}
+              className="w-full p-3 border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:outline-none resize-none"
+              placeholder="Level description..."
+              rows={2}
+            />
+          ) : (
+            <motion.p 
+              key="viewing"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="text-lg text-gray-600"
+            >
+              {levelData?.description || 'Unknown level'}
+            </motion.p>
+          )}
+        </AnimatePresence>
       </div>
       
       <div className="relative flex items-center justify-center">
