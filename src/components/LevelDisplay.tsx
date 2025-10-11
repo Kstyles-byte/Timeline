@@ -83,7 +83,7 @@ export function LevelDisplay({ currentLevel, daysCompleted, levelData, isEditMod
                 type="text"
                 value={editName}
                 onChange={(e) => setEditName(e.target.value)}
-                className="text-2xl font-bold text-indigo-600 bg-transparent border-b-2 border-indigo-300 focus:border-indigo-500 focus:outline-none ml-2"
+                className="text-2xl font-bold text-indigo-600 bg-transparent border-b-2 border-indigo-300 focus:border-indigo-500 focus:outline-none ml-2 placeholder-gray-400"
                 placeholder="Level name..."
               />
             ) : (
@@ -137,7 +137,7 @@ export function LevelDisplay({ currentLevel, daysCompleted, levelData, isEditMod
               exit={{ opacity: 0 }}
               value={editDescription}
               onChange={(e) => setEditDescription(e.target.value)}
-              className="w-full p-3 border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:outline-none resize-none"
+              className="w-full p-3 border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:outline-none resize-none text-gray-900 placeholder-gray-400"
               placeholder="Level description..."
               rows={2}
             />

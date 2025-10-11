@@ -122,7 +122,7 @@ export function NonNegotiables({ nonNegotiables, isEditMode, onUpdate }: NonNego
                   type="text"
                   value={item}
                   onChange={(e) => updateItem(index, e.target.value)}
-                  className="flex-1 p-3 border-2 border-gray-200 rounded-xl focus:border-red-500 focus:outline-none"
+                  className="flex-1 p-3 border-2 border-gray-200 rounded-xl focus:border-red-500 focus:outline-none text-gray-900 placeholder-gray-400"
                   placeholder="Enter non-negotiable..."
                 />
                 <motion.button

@@ -1,6 +1,6 @@
 'use client'
 
-import { Clock } from 'lucide-react'
+import { Activity } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 export function Header() {
@@ -16,7 +16,7 @@ export function Header() {
         animate={{ scale: 1 }}
         transition={{ delay: 0.2 }}
       >
-        <Clock className="text-yellow-400" size={48} />
+        <Activity className="text-yellow-400" size={48} />
         The Timeline
       </motion.h1>
       <motion.p 

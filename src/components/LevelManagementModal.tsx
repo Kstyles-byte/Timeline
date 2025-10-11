@@ -153,7 +153,7 @@ export function LevelManagementModal({ isOpen, onClose, levels, onUpdateLevel }:
                           type="text"
                           value={editData.name}
                           onChange={(e) => updateEditingLevel(level.id, 'name', e.target.value)}
-                          className="w-full p-3 border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:outline-none font-semibold"
+                          className="w-full p-3 border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:outline-none font-semibold text-gray-900 placeholder-gray-400"
                           placeholder="Level name..."
                         />
                       ) : (
@@ -171,7 +171,7 @@ export function LevelManagementModal({ isOpen, onClose, levels, onUpdateLevel }:
                         <textarea
                           value={editData.description}
                           onChange={(e) => updateEditingLevel(level.id, 'description', e.target.value)}
-                          className="w-full p-3 border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:outline-none resize-none"
+                          className="w-full p-3 border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:outline-none resize-none text-gray-900 placeholder-gray-400"
                           placeholder="Level description..."
                           rows={3}
                         />
