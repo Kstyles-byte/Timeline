@@ -13,15 +13,12 @@
   --success-bg: #14532d;
   --failure-bg: #7f1d1d;
   
-  /* Logo colors - teal/orange/slate palette */
-  --teal: #4EB7A7;
-  --teal-dark: #3a9689;
-  --teal-light: #6bc7ba;
-  --orange: #F97316;
-  --orange-dark: #ea580c;
-  --orange-light: #fb923c;
-  --gray-blue: #8B9AAE;
-  --slate-bg: #475569;
+  /* Green palette */
+  --green-bright: #10b981;
+  --green-medium: #059669;
+  --green-dark: #047857;
+  --green-light: #34d399;
+  --green-subtle: #6ee7b7;
 }
 
 @theme inline {

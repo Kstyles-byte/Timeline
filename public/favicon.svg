@@ -1,31 +1,34 @@
-<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Dark slate background -->
-  <rect width="32" height="32" rx="7" fill="#475569"/>
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background with gradient -->
+  <rect width="512" height="512" rx="120" fill="url(#bgGradient)"/>
   
-  <!-- Teal left rounded shape -->
-  <path d="M 7 0 L 15 0 Q 18 0 18 3 L 18 10 Q 18 13 15 15 L 11 19 Q 9 21 9 25 L 9 29 Q 9 32 6 32 L 3 32 Q 0 32 0 29 L 0 7 Q 0 0 7 0 Z" fill="#4EB7A7" clip-path="url(#clip32)"/>
+  <!-- Decorative circles -->
+  <circle cx="100" cy="100" r="60" fill="rgba(16, 185, 129, 0.1)"/>
+  <circle cx="412" cy="412" r="80" fill="rgba(16, 185, 129, 0.1)"/>
   
-  <!-- Timeline bars -->
-  <rect x="14.5" y="17" width="2" height="5.5" rx="1" fill="#4EB7A7"/>
-  <rect x="17.5" y="19" width="2" height="3.5" rx="1" fill="#8B9AAE"/>
-  <rect x="20.5" y="20.5" width="2" height="2" rx="1" fill="#F97316"/>
+  <!-- Main T letter -->
+  <g transform="translate(256, 256)">
+    <!-- Horizontal bar of T -->
+    <rect x="-140" y="-160" width="280" height="60" rx="30" fill="url(#letterGradient)"/>
+    
+    <!-- Vertical bar of T -->
+    <rect x="-40" y="-100" width="80" height="260" rx="40" fill="url(#letterGradient)"/>
+    
+    <!-- Decorative accent -->
+    <circle cx="0" cy="120" r="25" fill="#34d399" opacity="0.8"/>
+  </g>
   
-  <!-- Timeline base line with ticks -->
-  <rect x="9" y="22.8" width="14" height="0.4" fill="white"/>
-  <rect x="9" y="22.5" width="0.4" height="1" fill="white"/>
-  <rect x="13" y="22.5" width="0.4" height="1" fill="white"/>
-  <rect x="17" y="22.5" width="0.4" height="1" fill="white"/>
-  <rect x="21" y="22.5" width="0.4" height="1" fill="white"/>
-  <rect x="23" y="22.5" width="0.4" height="1" fill="white"/>
-  
-  <!-- Orange dot above orange bar -->
-  <circle cx="21.5" cy="18.5" r="1" fill="#F97316"/>
-  
-  <!-- Gradient definition -->
+  <!-- Gradient definitions -->
   <defs>
-    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#475569;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#1e293b;stop-opacity:1" />
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e293b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0f172a;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="letterGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#34d399;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#10b981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
     </linearGradient>
   </defs>
 </svg>

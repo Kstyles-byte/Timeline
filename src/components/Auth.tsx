@@ -128,7 +128,7 @@ export function Auth() {
           <motion.button
             type="submit"
             disabled={isLoading}
-            className="w-full py-3 bg-gradient-to-r from-teal-500 to-teal-600 text-white font-semibold rounded-xl hover:from-teal-600 hover:to-teal-700 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+            className="w-full py-3 bg-gradient-to-r from-emerald-500 to-green-600 text-white font-semibold rounded-xl hover:from-emerald-600 hover:to-green-700 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             initial={{ y: 20, opacity: 0 }}
@@ -155,7 +155,7 @@ export function Auth() {
               setEmail('')
               setPassword('')
             }}
-            className="text-teal-300 hover:text-teal-200 font-medium transition-colors duration-300 mt-2"
+            className="text-emerald-300 hover:text-emerald-200 font-medium transition-colors duration-300 mt-2"
           >
             {isSignUp ? 'Sign in instead' : 'Create one now'}
           </button>
