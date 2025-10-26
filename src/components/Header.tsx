@@ -26,7 +26,7 @@ export function Header() {
       className="text-center mb-10 bg-slate-900/30 backdrop-blur-md rounded-3xl p-8 border border-slate-700/50"
     >
       <motion.h1 
-        className="text-6xl font-bold mb-3 text-shadow-lg flex items-center justify-center gap-1 font-[family-name:var(--font-playfair)]"
+        className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 text-shadow-lg flex items-center justify-center gap-1 font-[family-name:var(--font-playfair)]"
       >
         {title.split('').map((char, index) => (
           <motion.span
@@ -43,7 +43,7 @@ export function Header() {
         ))}
       </motion.h1>
       <motion.p 
-        className="text-xl text-white/90 font-light tracking-wide"
+        className="text-sm sm:text-base md:text-lg lg:text-xl text-white/90 font-light tracking-wide px-4"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.8 }}
