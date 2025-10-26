@@ -173,7 +173,10 @@ export function useSupabaseTimeline() {
         days_completed: newData.daysCompleted,
         current_streak: newData.currentStreak,
         levels_completed: newData.levelsCompleted,
-        total_restarts: newData.totalRestarts
+        total_restarts: newData.totalRestarts,
+        updated_at: new Date().toISOString()
+      }, {
+        onConflict: 'user_id'
       })
 
     if (error) {
