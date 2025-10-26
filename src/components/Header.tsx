@@ -1,8 +1,9 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { BarChart3, Moon, Sun } from 'lucide-react'
+import { Moon, Sun } from 'lucide-react'
 import { useTheme } from '@/contexts/ThemeContext'
+import Image from 'next/image'
 
 export function Header() {
   const { theme, toggleTheme } = useTheme()
@@ -33,7 +34,13 @@ export function Header() {
         animate={{ scale: 1 }}
         transition={{ delay: 0.2 }}
       >
-        <BarChart3 className="text-yellow-400" size={48} />
+        <Image 
+          src="/logo.svg" 
+          alt="Timeline Logo" 
+          width={56} 
+          height={56}
+          className="drop-shadow-lg"
+        />
         The Timeline
       </motion.h1>
       <motion.p 
