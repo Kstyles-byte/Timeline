@@ -51,7 +51,7 @@ export function DailyCheckin({ onSuccess, onFailure }: DailyCheckinProps) {
         className="bg-slate-800 rounded-3xl p-8 mb-8 shadow-2xl text-center"
       >
         <h3 className="text-2xl font-semibold text-gray-100 mb-6 flex items-center justify-center gap-3">
-          <CalendarCheck className="text-indigo-400" size={24} />
+          <CalendarCheck className="text-teal-400" size={24} />
           Today&apos;s Check-in
         </h3>
         
@@ -60,7 +60,7 @@ export function DailyCheckin({ onSuccess, onFailure }: DailyCheckinProps) {
             onClick={handleSuccess}
             className={cn(
               "px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 flex items-center gap-3 min-w-[180px] justify-center",
-              "bg-gradient-to-r from-indigo-500 to-indigo-600 text-white hover:from-indigo-600 hover:to-indigo-700",
+              "bg-gradient-to-r from-teal-500 to-teal-600 text-white hover:from-teal-600 hover:to-teal-700",
               "shadow-lg hover:shadow-xl hover:-translate-y-1"
             )}
             whileHover={{ scale: 1.05 }}
