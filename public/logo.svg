@@ -22,29 +22,26 @@
     
     <!-- Bar 1 - Teal (tallest) -->
     <rect x="234" y="280" width="28" height="83" rx="14" fill="#4EB7A7">
-      <animate attributeName="height" values="0;83" dur="0.5s" fill="freeze"/>
-      <animate attributeName="y" values="363;280" dur="0.5s" fill="freeze"/>
+      <animate attributeName="height" values="0;83" dur="0.9s" fill="freeze"/>
+      <animate attributeName="y" values="363;280" dur="0.9s" fill="freeze"/>
     </rect>
     
     <!-- Bar 2 - Gray/Blue (medium) -->
     <rect x="284" y="310" width="28" height="53" rx="14" fill="#8B9AAE">
-      <animate attributeName="height" values="0;53" dur="0.5s" begin="0.1s" fill="freeze"/>
-      <animate attributeName="y" values="363;310" dur="0.5s" begin="0.1s" fill="freeze"/>
+      <animate attributeName="height" values="0;53" dur="0.9s" begin="0.15s" fill="freeze"/>
+      <animate attributeName="y" values="363;310" dur="0.9s" begin="0.15s" fill="freeze"/>
     </rect>
     
     <!-- Bar 3 - Orange (shortest) -->
     <rect x="334" y="328" width="28" height="35" rx="14" fill="#F97316">
-      <animate attributeName="height" values="0;35" dur="0.5s" begin="0.2s" fill="freeze"/>
-      <animate attributeName="y" values="363;328" dur="0.5s" begin="0.2s" fill="freeze"/>
+      <animate attributeName="height" values="0;35" dur="0.9s" begin="0.3s" fill="freeze"/>
+      <animate attributeName="y" values="363;328" dur="0.9s" begin="0.3s" fill="freeze"/>
     </rect>
   </g>
   
-  <!-- Orange dots on the right -->
-  <circle cx="337" cy="190" r="15" fill="#F97316">
-    <animate attributeName="opacity" values="0;1" dur="0.4s" begin="0.3s" fill="freeze"/>
-  </circle>
-  <circle cx="337" cy="240" r="12" fill="#FB923C" opacity="0.7">
-    <animate attributeName="opacity" values="0;0.7" dur="0.4s" begin="0.4s" fill="freeze"/>
+  <!-- Orange dot above orange bar -->
+  <circle cx="348" cy="300" r="14" fill="#F97316">
+    <animate attributeName="opacity" values="0;1" dur="0.8s" begin="0.6s" fill="freeze"/>
   </circle>
   
   <!-- Clipping for rounded corners -->

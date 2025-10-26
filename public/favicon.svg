@@ -18,9 +18,8 @@
   <rect x="21" y="22.5" width="0.4" height="1" fill="white"/>
   <rect x="23" y="22.5" width="0.4" height="1" fill="white"/>
   
-  <!-- Orange accent dots -->
-  <circle cx="21" cy="12" r="1" fill="#F97316"/>
-  <circle cx="21" cy="15" r="0.8" fill="#FB923C" opacity="0.7"/>
+  <!-- Orange dot above orange bar -->
+  <circle cx="21.5" cy="18.5" r="1" fill="#F97316"/>
   
   <!-- Gradient definition -->
   <defs>
