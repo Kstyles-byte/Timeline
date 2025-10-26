@@ -15,7 +15,7 @@
     <rect x="-40" y="-100" width="80" height="260" rx="40" fill="url(#letterGradient)"/>
     
     <!-- Decorative accent -->
-    <circle cx="0" cy="120" r="25" fill="#34d399" opacity="0.8"/>
+    <circle cx="0" cy="120" r="25" fill="#5eead4" opacity="0.8"/>
   </g>
   
   <!-- Gradient definitions -->
@@ -26,9 +26,9 @@
     </linearGradient>
     
     <linearGradient id="letterGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#34d399;stop-opacity:1" />
-      <stop offset="50%" style="stop-color:#10b981;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+      <stop offset="0%" style="stop-color:#5eead4;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#2dd4bf;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#14b8a6;stop-opacity:1" />
     </linearGradient>
   </defs>
 </svg>

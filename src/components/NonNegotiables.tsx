@@ -65,14 +65,14 @@ export function NonNegotiables({ nonNegotiables, isEditMode, onUpdate }: NonNego
     >
       <div className="flex items-center justify-between mb-6">
         <h3 className="text-2xl font-semibold text-gray-100 flex items-center gap-3">
-          <CheckCircle className="text-emerald-400" size={24} />
+          <CheckCircle className="text-teal-300" size={24} />
           Non-Negotiables
         </h3>
         
         {isEditMode && !isEditing && (
             <motion.button
               onClick={handleEdit}
-              className="flex items-center gap-2 px-4 py-2 bg-emerald-500 text-white rounded-xl hover:bg-emerald-600 transition-colors"
+              className="flex items-center gap-2 px-4 py-2 bg-teal-500 text-white rounded-xl hover:bg-teal-600 transition-colors"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -86,7 +86,7 @@ export function NonNegotiables({ nonNegotiables, isEditMode, onUpdate }: NonNego
             <motion.button
               onClick={handleSave}
               disabled={isSaving}
-              className="flex items-center gap-2 px-4 py-2 bg-emerald-500 text-white rounded-xl hover:bg-emerald-600 transition-colors disabled:opacity-50"
+              className="flex items-center gap-2 px-4 py-2 bg-teal-500 text-white rounded-xl hover:bg-teal-600 transition-colors disabled:opacity-50"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -117,12 +117,12 @@ export function NonNegotiables({ nonNegotiables, isEditMode, onUpdate }: NonNego
           >
             {editItems.map((item, index) => (
               <div key={index} className="flex items-center gap-3">
-                <CheckCircle className="text-emerald-400 flex-shrink-0" size={20} />
+                <CheckCircle className="text-teal-300 flex-shrink-0" size={20} />
                 <input
                   type="text"
                   value={item}
                   onChange={(e) => updateItem(index, e.target.value)}
-                  className="flex-1 p-3 border-2 border-slate-600 rounded-xl focus:border-emerald-500 focus:outline-none bg-slate-700 text-gray-100 placeholder-gray-400"
+                  className="flex-1 p-3 border-2 border-slate-600 rounded-xl focus:border-teal-400 focus:outline-none bg-slate-700 text-gray-100 placeholder-gray-400"
                   placeholder="Enter non-negotiable..."
                 />
                 <motion.button
@@ -138,12 +138,12 @@ export function NonNegotiables({ nonNegotiables, isEditMode, onUpdate }: NonNego
             
             <motion.button
               onClick={addItem}
-              className="flex items-center gap-2 px-4 py-3 border-2 border-dashed border-slate-600 rounded-xl hover:border-emerald-500 hover:bg-emerald-900/20 transition-colors w-full justify-center"
+              className="flex items-center gap-2 px-4 py-3 border-2 border-dashed border-slate-600 rounded-xl hover:border-teal-400 hover:bg-teal-900/20 transition-colors w-full justify-center"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              <Plus size={20} className="text-emerald-400" />
-              <span className="text-emerald-400 font-medium">Add Non-Negotiable</span>
+              <Plus size={20} className="text-teal-300" />
+              <span className="text-teal-300 font-medium">Add Non-Negotiable</span>
             </motion.button>
           </motion.div>
         ) : (
@@ -160,9 +160,9 @@ export function NonNegotiables({ nonNegotiables, isEditMode, onUpdate }: NonNego
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-slate-700 p-4 rounded-xl border-l-4 border-emerald-400 flex items-center gap-4"
+                className="bg-slate-700 p-4 rounded-xl border-l-4 border-teal-300 flex items-center gap-4"
               >
-                <CheckCircle className="text-emerald-400 flex-shrink-0" size={20} />
+                <CheckCircle className="text-teal-300 flex-shrink-0" size={20} />
                 <span className="text-gray-200 font-medium">{item}</span>
               </motion.div>
             ))}

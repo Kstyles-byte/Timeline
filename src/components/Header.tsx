@@ -35,7 +35,7 @@ export function Header() {
             variants={letterVariants}
             initial="hidden"
             animate="visible"
-            className={char === ' ' ? 'inline-block w-4' : 'inline-block bg-gradient-to-r from-emerald-400 via-green-400 to-emerald-500 bg-clip-text text-transparent hover:from-emerald-300 hover:via-green-300 hover:to-emerald-400 transition-all duration-300'}
+            className={char === ' ' ? 'inline-block w-4' : 'inline-block bg-gradient-to-r from-teal-300 via-cyan-300 to-teal-400 bg-clip-text text-transparent hover:from-teal-200 hover:via-cyan-200 hover:to-teal-300 transition-all duration-300'}
             whileHover={{ scale: 1.1, rotate: [0, -5, 5, 0] }}
           >
             {char}

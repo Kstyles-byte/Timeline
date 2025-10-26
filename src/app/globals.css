@@ -13,12 +13,12 @@
   --success-bg: #14532d;
   --failure-bg: #7f1d1d;
   
-  /* Green palette */
-  --green-bright: #10b981;
-  --green-medium: #059669;
-  --green-dark: #047857;
-  --green-light: #34d399;
-  --green-subtle: #6ee7b7;
+  /* Soft teal-green palette */
+  --teal-primary: #5eead4;
+  --teal-medium: #2dd4bf;
+  --teal-muted: #14b8a6;
+  --teal-dark: #0d9488;
+  --teal-darker: #0f766e;
 }
 
 @theme inline {

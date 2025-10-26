@@ -15,22 +15,22 @@ export function Stats({ currentStreak, levelsCompleted, totalRestarts }: StatsPr
       icon: Flame,
       value: currentStreak,
       label: 'Day Streak',
-      color: 'text-green-400',
-      bgColor: 'from-green-900/30 to-emerald-900/30'
+      color: 'text-teal-300',
+      bgColor: 'from-teal-900/30 to-cyan-900/30'
     },
     {
       icon: Trophy,
       value: levelsCompleted,
       label: 'Levels Completed',
-      color: 'text-emerald-400',
-      bgColor: 'from-emerald-900/30 to-green-900/30'
+      color: 'text-teal-300',
+      bgColor: 'from-teal-900/30 to-cyan-900/30'
     },
     {
       icon: RotateCcw,
       value: totalRestarts,
       label: 'Total Restarts',
-      color: 'text-green-500',
-      bgColor: 'from-green-800/30 to-emerald-800/30'
+      color: 'text-cyan-300',
+      bgColor: 'from-cyan-900/30 to-teal-900/30'
     }
   ]
 
