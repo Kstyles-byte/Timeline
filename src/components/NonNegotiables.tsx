@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import { AlertTriangle, Edit, Save, X, Plus, Trash2 } from 'lucide-react'
+import { CheckCircle, Edit, Save, X, Plus, Trash2 } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 interface NonNegotiablesProps {
@@ -65,7 +65,7 @@ export function NonNegotiables({ nonNegotiables, isEditMode, onUpdate }: NonNego
     >
       <div className="flex items-center justify-between mb-6">
         <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-100 flex items-center gap-3">
-          <AlertTriangle className="text-red-500 dark:text-red-400" size={24} />
+          <CheckCircle className="text-teal-500 dark:text-teal-400" size={24} />
           Non-Negotiables
         </h3>
         
@@ -117,17 +117,17 @@ export function NonNegotiables({ nonNegotiables, isEditMode, onUpdate }: NonNego
           >
             {editItems.map((item, index) => (
               <div key={index} className="flex items-center gap-3">
-                <AlertTriangle className="text-red-500 flex-shrink-0" size={20} />
+                <CheckCircle className="text-teal-500 flex-shrink-0" size={20} />
                 <input
                   type="text"
                   value={item}
                   onChange={(e) => updateItem(index, e.target.value)}
-                  className="flex-1 p-3 border-2 border-gray-300 dark:border-slate-600 rounded-xl focus:border-red-500 dark:focus:border-red-400 focus:outline-none bg-white dark:bg-slate-700 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 transition-colors"
+                  className="flex-1 p-3 border-2 border-gray-300 dark:border-slate-600 rounded-xl focus:border-teal-500 dark:focus:border-teal-400 focus:outline-none bg-white dark:bg-slate-700 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 transition-colors"
                   placeholder="Enter non-negotiable..."
                 />
                 <motion.button
                   onClick={() => removeItem(index)}
-                  className="p-2 text-red-500 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/30 rounded-lg transition-colors"
+                  className="p-2 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-slate-600 rounded-lg transition-colors"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                 >
@@ -138,12 +138,12 @@ export function NonNegotiables({ nonNegotiables, isEditMode, onUpdate }: NonNego
             
             <motion.button
               onClick={addItem}
-              className="flex items-center gap-2 px-4 py-3 border-2 border-dashed border-gray-300 dark:border-slate-600 rounded-xl hover:border-red-500 dark:hover:border-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors w-full justify-center"
+              className="flex items-center gap-2 px-4 py-3 border-2 border-dashed border-gray-300 dark:border-slate-600 rounded-xl hover:border-teal-500 dark:hover:border-teal-400 hover:bg-teal-50 dark:hover:bg-teal-900/20 transition-colors w-full justify-center"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              <Plus size={20} className="text-red-500 dark:text-red-400" />
-              <span className="text-red-500 dark:text-red-400 font-medium">Add Non-Negotiable</span>
+              <Plus size={20} className="text-teal-500 dark:text-teal-400" />
+              <span className="text-teal-500 dark:text-teal-400 font-medium">Add Non-Negotiable</span>
             </motion.button>
           </motion.div>
         ) : (
@@ -160,9 +160,9 @@ export function NonNegotiables({ nonNegotiables, isEditMode, onUpdate }: NonNego
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-gray-50 dark:bg-slate-700 p-4 rounded-xl border-l-4 border-red-500 dark:border-red-400 flex items-center gap-4 transition-colors"
+                className="bg-gray-50 dark:bg-slate-700 p-4 rounded-xl border-l-4 border-teal-500 dark:border-teal-400 flex items-center gap-4 transition-colors"
               >
-                <AlertTriangle className="text-red-500 dark:text-red-400 flex-shrink-0" size={20} />
+                <CheckCircle className="text-teal-500 dark:text-teal-400 flex-shrink-0" size={20} />
                 <span className="text-gray-700 dark:text-gray-200 font-medium">{item}</span>
               </motion.div>
             ))}
