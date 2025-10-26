@@ -1,20 +1,6 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f8fafc;
-  --foreground: #1e293b;
-  --card-bg: #ffffff;
-  --card-border: #e2e8f0;
-  --modal-bg: #ffffff;
-  --input-bg: #ffffff;
-  --input-border: #cbd5e1;
-  --input-text: #1e293b;
-  --muted-text: #64748b;
-  --success-bg: #dcfce7;
-  --failure-bg: #fee2e2;
-}
-
-:root.dark {
   --background: #0f172a;
   --foreground: #e2e8f0;
   --card-bg: #1e293b;
@@ -26,6 +12,12 @@
   --muted-text: #94a3b8;
   --success-bg: #14532d;
   --failure-bg: #7f1d1d;
+  
+  /* Main brand colors - slate/indigo palette */
+  --primary: #6366f1;
+  --primary-light: #818cf8;
+  --secondary: #10b981;
+  --danger: #ef4444;
 }
 
 @theme inline {

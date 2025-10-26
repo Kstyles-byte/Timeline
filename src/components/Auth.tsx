@@ -36,11 +36,11 @@ export function Auth() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-600 via-purple-700 to-blue-800 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 flex items-center justify-center p-4 transition-colors">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center p-4">
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="bg-white/10 dark:bg-slate-800/50 backdrop-blur-md rounded-3xl p-8 w-full max-w-md border border-white/20 dark:border-slate-700/50 transition-colors"
+        className="bg-slate-800/50 backdrop-blur-md rounded-3xl p-8 w-full max-w-md border border-slate-700/50"
       >
         <motion.div 
           className="text-center mb-8"
@@ -128,7 +128,7 @@ export function Auth() {
           <motion.button
             type="submit"
             disabled={isLoading}
-            className="w-full py-3 bg-gradient-to-r from-teal-500 to-emerald-500 text-white font-semibold rounded-xl hover:from-teal-600 hover:to-emerald-600 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+            className="w-full py-3 bg-gradient-to-r from-indigo-500 to-indigo-600 text-white font-semibold rounded-xl hover:from-indigo-600 hover:to-indigo-700 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             initial={{ y: 20, opacity: 0 }}
@@ -155,7 +155,7 @@ export function Auth() {
               setEmail('')
               setPassword('')
             }}
-            className="text-teal-300 hover:text-teal-200 font-medium transition-colors duration-300 mt-2"
+            className="text-indigo-300 hover:text-indigo-200 font-medium transition-colors duration-300 mt-2"
           >
             {isSignUp ? 'Sign in instead' : 'Create one now'}
           </button>
