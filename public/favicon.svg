@@ -1,22 +1,26 @@
 <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Background -->
-  <rect width="32" height="32" rx="7" fill="url(#gradient)"/>
+  <!-- Dark slate background -->
+  <rect width="32" height="32" rx="7" fill="#475569"/>
   
-  <!-- Teal accent blob -->
-  <path d="M 6 9 Q 9 6 13 7 Q 16 9 16 13 Q 17 17 14 19 Q 11 21 9 19 Q 6 17 5 13 Q 5 11 6 9 Z" fill="#14b8a6" opacity="0.8"/>
+  <!-- Teal left rounded shape -->
+  <path d="M 7 0 L 15 0 Q 18 0 18 3 L 18 10 Q 18 13 15 15 L 11 19 Q 9 21 9 25 L 9 29 Q 9 32 6 32 L 3 32 Q 0 32 0 29 L 0 7 Q 0 0 7 0 Z" fill="#4EB7A7" clip-path="url(#clip32)"/>
   
   <!-- Timeline bars -->
-  <rect x="8" y="17" width="2" height="7" rx="1" fill="#14b8a6"/>
-  <rect x="13" y="19" width="2" height="5" rx="1" fill="#06b6d4"/>
-  <rect x="18" y="21" width="2" height="3" rx="1" fill="#64748b"/>
-  <rect x="23" y="22.5" width="2" height="1.5" rx="1" fill="#f97316"/>
+  <rect x="14.5" y="17" width="2" height="5.5" rx="1" fill="#4EB7A7"/>
+  <rect x="17.5" y="19" width="2" height="3.5" rx="1" fill="#8B9AAE"/>
+  <rect x="20.5" y="20.5" width="2" height="2" rx="1" fill="#F97316"/>
   
-  <!-- Timeline base -->
-  <rect x="7" y="24.5" width="19" height="0.5" fill="#e2e8f0" opacity="0.4"/>
+  <!-- Timeline base line with ticks -->
+  <rect x="9" y="22.8" width="14" height="0.4" fill="white"/>
+  <rect x="9" y="22.5" width="0.4" height="1" fill="white"/>
+  <rect x="13" y="22.5" width="0.4" height="1" fill="white"/>
+  <rect x="17" y="22.5" width="0.4" height="1" fill="white"/>
+  <rect x="21" y="22.5" width="0.4" height="1" fill="white"/>
+  <rect x="23" y="22.5" width="0.4" height="1" fill="white"/>
   
-  <!-- Orange dot accent -->
-  <circle cx="24" cy="11" r="1.2" fill="#f97316" opacity="0.9"/>
-  <circle cx="24" cy="8" r="0.8" fill="#f97316" opacity="0.6"/>
+  <!-- Orange accent dots -->
+  <circle cx="21" cy="12" r="1" fill="#F97316"/>
+  <circle cx="21" cy="15" r="0.8" fill="#FB923C" opacity="0.7"/>
   
   <!-- Gradient definition -->
   <defs>
