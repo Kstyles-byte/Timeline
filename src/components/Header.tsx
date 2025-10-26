@@ -23,7 +23,7 @@ export function Header() {
           transition={{ delay: 0.3, type: "spring", stiffness: 200 }}
         >
           <Image 
-            src="/logo.svg" 
+            src="/logo2.png" 
             alt="Timeline Logo" 
             width={80} 
             height={80}
