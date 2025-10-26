@@ -11,7 +11,7 @@ export function Header() {
       transition: {
         delay: i * 0.05,
         duration: 0.5,
-        type: "spring",
+        type: "spring" as const,
         stiffness: 200
       }
     })
