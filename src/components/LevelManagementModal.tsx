@@ -77,14 +77,14 @@ export function LevelManagementModal({ isOpen, onClose, levels, onUpdateLevel }:
           initial={{ scale: 0.95, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0.95, opacity: 0 }}
-          className="bg-white rounded-3xl p-8 max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+          className="bg-white dark:bg-slate-800 rounded-3xl p-8 max-w-4xl w-full max-h-[90vh] overflow-y-auto transition-colors"
           onClick={(e) => e.stopPropagation()}
         >
           <div className="flex items-center justify-between mb-8">
-            <h2 className="text-3xl font-bold text-gray-800">Manage All Levels</h2>
+            <h2 className="text-3xl font-bold text-gray-800 dark:text-gray-100">Manage All Levels</h2>
             <motion.button
               onClick={onClose}
-              className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+              className="p-2 hover:bg-gray-100 dark:hover:bg-slate-700 rounded-full transition-colors text-gray-700 dark:text-gray-300"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
@@ -102,10 +102,10 @@ export function LevelManagementModal({ isOpen, onClose, levels, onUpdateLevel }:
                   key={level.id}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="bg-gray-50 rounded-2xl p-6 border-2 border-gray-200"
+                  className="bg-gray-50 dark:bg-slate-700 rounded-2xl p-6 border-2 border-gray-200 dark:border-slate-600 transition-colors"
                 >
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-xl font-semibold text-indigo-600">
+                    <h3 className="text-xl font-semibold text-indigo-600 dark:text-indigo-400">
                       Level {level.id}
                     </h3>
                     {!isEditing ? (
@@ -132,7 +132,7 @@ export function LevelManagementModal({ isOpen, onClose, levels, onUpdateLevel }:
                         </motion.button>
                         <motion.button
                           onClick={() => cancelEditing(level.id)}
-                          className="flex items-center gap-2 px-4 py-2 bg-gray-500 text-white rounded-xl hover:bg-gray-600 transition-colors"
+                          className="flex items-center gap-2 px-4 py-2 bg-gray-500 dark:bg-slate-600 text-white rounded-xl hover:bg-gray-600 dark:hover:bg-slate-500 transition-colors"
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
                         >
@@ -145,7 +145,7 @@ export function LevelManagementModal({ isOpen, onClose, levels, onUpdateLevel }:
 
                   <div className="space-y-4">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                         Level Name
                       </label>
                       {isEditing ? (
@@ -153,30 +153,30 @@ export function LevelManagementModal({ isOpen, onClose, levels, onUpdateLevel }:
                           type="text"
                           value={editData.name}
                           onChange={(e) => updateEditingLevel(level.id, 'name', e.target.value)}
-                          className="w-full p-3 border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:outline-none font-semibold text-gray-900 placeholder-gray-400"
+                          className="w-full p-3 border-2 border-gray-300 dark:border-slate-600 rounded-xl focus:border-indigo-500 dark:focus:border-indigo-400 focus:outline-none font-semibold bg-white dark:bg-slate-600 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 transition-colors"
                           placeholder="Level name..."
                         />
                       ) : (
-                        <div className="text-lg font-semibold text-gray-800">
+                        <div className="text-lg font-semibold text-gray-800 dark:text-gray-200">
                           {level.name}
                         </div>
                       )}
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                         Description
                       </label>
                       {isEditing ? (
                         <textarea
                           value={editData.description}
                           onChange={(e) => updateEditingLevel(level.id, 'description', e.target.value)}
-                          className="w-full p-3 border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:outline-none resize-none text-gray-900 placeholder-gray-400"
+                          className="w-full p-3 border-2 border-gray-300 dark:border-slate-600 rounded-xl focus:border-indigo-500 dark:focus:border-indigo-400 focus:outline-none resize-none bg-white dark:bg-slate-600 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 transition-colors"
                           placeholder="Level description..."
                           rows={3}
                         />
                       ) : (
-                        <div className="text-gray-600 bg-white p-3 rounded-xl border">
+                        <div className="text-gray-600 dark:text-gray-300 bg-white dark:bg-slate-600 p-3 rounded-xl border border-gray-200 dark:border-slate-500 transition-colors">
                           {level.description}
                         </div>
                       )}

@@ -28,11 +28,11 @@ export function LevelManagement({ currentLevel, levels = [], isEditMode = false,
     <motion.div 
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="bg-white rounded-3xl p-8 mb-8 shadow-2xl"
+      className="bg-white dark:bg-slate-800 rounded-3xl p-8 mb-8 shadow-2xl transition-colors"
     >
       <div className="flex items-center justify-between mb-6">
-        <h3 className="text-2xl font-semibold text-gray-800 flex items-center gap-3">
-          <Trophy className="text-yellow-500" size={24} />
+        <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-100 flex items-center gap-3">
+          <Trophy className="text-yellow-500 dark:text-yellow-400" size={24} />
           Level Management
         </h3>
         
@@ -66,7 +66,7 @@ export function LevelManagement({ currentLevel, levels = [], isEditMode = false,
                 {
                   "bg-gradient-to-br from-teal-500 to-emerald-500 text-white border-teal-500 shadow-lg": isCompleted,
                   "bg-gradient-to-br from-indigo-500 to-purple-600 text-white border-indigo-500 shadow-lg scale-105": isCurrent,
-                  "bg-gray-100 text-gray-400 border-gray-200 opacity-60": isLocked
+                  "bg-gray-100 dark:bg-slate-700 text-gray-400 dark:text-gray-500 border-gray-200 dark:border-slate-600 opacity-60": isLocked
                 }
               )}
               whileHover={{ scale: isCurrent ? 1.08 : isCompleted ? 1.02 : 1.01 }}

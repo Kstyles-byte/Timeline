@@ -32,7 +32,7 @@ function TimelineApp() {
   // Show auth loading state
   if (authLoading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-indigo-600 via-purple-700 to-blue-800 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-indigo-600 via-purple-700 to-blue-800 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 flex items-center justify-center transition-colors">
         <motion.div
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -52,7 +52,7 @@ function TimelineApp() {
   // Show data loading state
   if (!isLoaded) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-indigo-600 via-purple-700 to-blue-800 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-indigo-600 via-purple-700 to-blue-800 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 flex items-center justify-center transition-colors">
         <motion.div
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -80,7 +80,7 @@ function TimelineApp() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-600 via-purple-700 to-blue-800 relative">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-600 via-purple-700 to-blue-800 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 relative transition-colors">
       <UserToolbar />
       
       <div className="container mx-auto max-w-6xl px-6 py-8">
@@ -89,11 +89,11 @@ function TimelineApp() {
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-teal-400/20 border border-teal-400/30 rounded-2xl p-4 mb-8 backdrop-blur-sm"
+          className="bg-teal-400/20 dark:bg-teal-600/20 border border-teal-400/30 dark:border-teal-500/30 rounded-2xl p-4 mb-8 backdrop-blur-sm transition-colors"
         >
           <div className="flex items-center gap-3">
-            <div className="w-3 h-3 bg-teal-400 rounded-full animate-pulse"></div>
-            <span className="text-teal-100 font-medium text-lg">
+            <div className="w-3 h-3 bg-teal-400 dark:bg-teal-500 rounded-full animate-pulse"></div>
+            <span className="text-teal-100 dark:text-teal-200 font-medium text-lg">
               Personal Timeline - Customize your levels and track your progress
             </span>
           </div>

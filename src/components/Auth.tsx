@@ -36,11 +36,11 @@ export function Auth() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-600 via-purple-700 to-blue-800 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-600 via-purple-700 to-blue-800 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 flex items-center justify-center p-4 transition-colors">
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="bg-white/10 backdrop-blur-md rounded-3xl p-8 w-full max-w-md border border-white/20"
+        className="bg-white/10 dark:bg-slate-800/50 backdrop-blur-md rounded-3xl p-8 w-full max-w-md border border-white/20 dark:border-slate-700/50 transition-colors"
       >
         <motion.div 
           className="text-center mb-8"

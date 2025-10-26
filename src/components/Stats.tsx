@@ -16,21 +16,21 @@ export function Stats({ currentStreak, levelsCompleted, totalRestarts }: StatsPr
       value: currentStreak,
       label: 'Day Streak',
       color: 'text-orange-500',
-      bgColor: 'from-orange-100 to-red-100'
+      bgColor: 'from-orange-100 to-red-100 dark:from-orange-900/30 dark:to-red-900/30'
     },
     {
       icon: Trophy,
       value: levelsCompleted,
       label: 'Levels Completed',
       color: 'text-yellow-500',
-      bgColor: 'from-yellow-100 to-amber-100'
+      bgColor: 'from-yellow-100 to-amber-100 dark:from-yellow-900/30 dark:to-amber-900/30'
     },
     {
       icon: RotateCcw,
       value: totalRestarts,
       label: 'Total Restarts',
       color: 'text-indigo-500',
-      bgColor: 'from-indigo-100 to-purple-100'
+      bgColor: 'from-indigo-100 to-purple-100 dark:from-indigo-900/30 dark:to-purple-900/30'
     }
   ]
 
@@ -54,7 +54,7 @@ export function Stats({ currentStreak, levelsCompleted, totalRestarts }: StatsPr
           </motion.div>
           
           <motion.div
-            className="text-4xl font-bold text-gray-800 mb-2"
+            className="text-4xl font-bold text-gray-800 dark:text-gray-100 mb-2"
             key={stat.value}
             initial={{ scale: 0.5 }}
             animate={{ scale: 1 }}
@@ -63,7 +63,7 @@ export function Stats({ currentStreak, levelsCompleted, totalRestarts }: StatsPr
             {stat.value}
           </motion.div>
           
-          <div className="text-sm font-semibold text-gray-600 uppercase tracking-wider">
+          <div className="text-sm font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">
             {stat.label}
           </div>
         </motion.div>

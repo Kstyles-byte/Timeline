@@ -64,12 +64,12 @@ export function LevelDisplay({ currentLevel, daysCompleted, levelData, isEditMod
     <motion.div 
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
-      className="bg-white rounded-3xl p-8 mb-8 shadow-2xl flex justify-between items-center flex-wrap gap-6"
+      className="bg-white dark:bg-slate-800 rounded-3xl p-8 mb-8 shadow-2xl flex justify-between items-center flex-wrap gap-6 transition-colors"
     >
       <div className="level-info flex-1">
         <div className="flex items-center justify-between mb-3">
           <motion.h2 
-            className="text-4xl font-bold text-indigo-600"
+            className="text-4xl font-bold text-indigo-600 dark:text-indigo-400"
             key={currentLevel}
             initial={{ scale: 0.8 }}
             animate={{ scale: 1 }}
@@ -83,7 +83,7 @@ export function LevelDisplay({ currentLevel, daysCompleted, levelData, isEditMod
                 type="text"
                 value={editName}
                 onChange={(e) => setEditName(e.target.value)}
-                className="text-2xl font-bold text-indigo-600 bg-transparent border-b-2 border-indigo-300 focus:border-indigo-500 focus:outline-none ml-2 placeholder-gray-400"
+                className="text-2xl font-bold text-indigo-600 dark:text-indigo-400 bg-transparent border-b-2 border-indigo-300 dark:border-indigo-500 focus:border-indigo-500 dark:focus:border-indigo-400 focus:outline-none ml-2 placeholder-gray-400 dark:placeholder-gray-500"
                 placeholder="Level name..."
               />
             ) : (
@@ -117,7 +117,7 @@ export function LevelDisplay({ currentLevel, daysCompleted, levelData, isEditMod
               </motion.button>
               <motion.button
                 onClick={handleCancel}
-                className="flex items-center gap-2 px-3 py-2 bg-gray-500 text-white rounded-xl hover:bg-gray-600 transition-colors text-sm"
+                className="flex items-center gap-2 px-3 py-2 bg-gray-500 dark:bg-slate-600 text-white rounded-xl hover:bg-gray-600 dark:hover:bg-slate-500 transition-colors text-sm"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -137,7 +137,7 @@ export function LevelDisplay({ currentLevel, daysCompleted, levelData, isEditMod
               exit={{ opacity: 0 }}
               value={editDescription}
               onChange={(e) => setEditDescription(e.target.value)}
-              className="w-full p-3 border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:outline-none resize-none text-gray-900 placeholder-gray-400"
+              className="w-full p-3 border-2 border-gray-300 dark:border-slate-600 rounded-xl focus:border-indigo-500 dark:focus:border-indigo-400 focus:outline-none resize-none bg-white dark:bg-slate-700 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 transition-colors"
               placeholder="Level description..."
               rows={2}
             />
@@ -147,7 +147,7 @@ export function LevelDisplay({ currentLevel, daysCompleted, levelData, isEditMod
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="text-lg text-gray-600"
+              className="text-lg text-gray-600 dark:text-gray-300"
             >
               {levelData?.description || 'Unknown level'}
             </motion.p>
@@ -162,7 +162,7 @@ export function LevelDisplay({ currentLevel, daysCompleted, levelData, isEditMod
           height="120"
         >
           <circle
-            className="text-gray-200"
+            className="text-gray-200 dark:text-slate-600"
             strokeWidth="8"
             stroke="currentColor"
             fill="transparent"
@@ -171,7 +171,7 @@ export function LevelDisplay({ currentLevel, daysCompleted, levelData, isEditMod
             cy="60"
           />
           <motion.circle
-            className="text-indigo-600"
+            className="text-indigo-600 dark:text-indigo-400"
             strokeWidth="8"
             strokeDasharray={strokeDasharray}
             strokeDashoffset={strokeDashoffset}
@@ -188,14 +188,14 @@ export function LevelDisplay({ currentLevel, daysCompleted, levelData, isEditMod
         </svg>
         <div className="absolute text-center">
           <motion.span 
-            className="text-3xl font-bold text-indigo-600 block"
+            className="text-3xl font-bold text-indigo-600 dark:text-indigo-400 block"
             key={daysCompleted}
             initial={{ scale: 0.5 }}
             animate={{ scale: 1 }}
           >
             {daysCompleted}
           </motion.span>
-          <span className="text-sm text-gray-600">/ 14 days</span>
+          <span className="text-sm text-gray-600 dark:text-gray-400">/ 14 days</span>
         </div>
       </div>
     </motion.div>

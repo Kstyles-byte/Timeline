@@ -28,7 +28,7 @@ export function UserToolbar() {
       <div className="relative">
         <motion.button
           onClick={() => setShowUserMenu(!showUserMenu)}
-          className="flex items-center gap-3 bg-white/10 backdrop-blur-md rounded-full px-4 py-2 text-white border border-white/20 hover:bg-white/20 transition-all duration-300"
+          className="flex items-center gap-3 bg-white/10 dark:bg-slate-800/50 backdrop-blur-md rounded-full px-4 py-2 text-white border border-white/20 dark:border-slate-700/50 hover:bg-white/20 dark:hover:bg-slate-700/50 transition-all duration-300"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
@@ -43,7 +43,7 @@ export function UserToolbar() {
             initial={{ opacity: 0, scale: 0.95, y: -10 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: -10 }}
-            className="absolute top-full right-0 mt-2 w-48 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 overflow-hidden"
+            className="absolute top-full right-0 mt-2 w-48 bg-white/10 dark:bg-slate-800/90 backdrop-blur-md rounded-2xl border border-white/20 dark:border-slate-700/50 overflow-hidden transition-colors"
           >
             <div className="p-3 border-b border-white/10">
               <p className="text-white text-sm font-medium truncate">
@@ -56,7 +56,7 @@ export function UserToolbar() {
                 setShowFailureLogs(true)
                 setShowUserMenu(false)
               }}
-              className="w-full flex items-center gap-3 px-4 py-3 text-white hover:bg-white/10 transition-colors text-left"
+              className="w-full flex items-center gap-3 px-4 py-3 text-white hover:bg-white/10 dark:hover:bg-slate-700/50 transition-colors text-left"
               whileHover={{ x: 5 }}
             >
               <FileText size={18} />

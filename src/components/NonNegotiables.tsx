@@ -61,11 +61,11 @@ export function NonNegotiables({ nonNegotiables, isEditMode, onUpdate }: NonNego
     <motion.div 
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
-      className="bg-white rounded-3xl p-8 mb-8 shadow-2xl"
+      className="bg-white dark:bg-slate-800 rounded-3xl p-8 mb-8 shadow-2xl transition-colors"
     >
       <div className="flex items-center justify-between mb-6">
-        <h3 className="text-2xl font-semibold text-gray-800 flex items-center gap-3">
-          <AlertTriangle className="text-red-500" size={24} />
+        <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-100 flex items-center gap-3">
+          <AlertTriangle className="text-red-500 dark:text-red-400" size={24} />
           Non-Negotiables
         </h3>
         
@@ -95,7 +95,7 @@ export function NonNegotiables({ nonNegotiables, isEditMode, onUpdate }: NonNego
             </motion.button>
             <motion.button
               onClick={handleCancel}
-              className="flex items-center gap-2 px-4 py-2 bg-gray-500 text-white rounded-xl hover:bg-gray-600 transition-colors"
+              className="flex items-center gap-2 px-4 py-2 bg-gray-500 dark:bg-slate-600 text-white rounded-xl hover:bg-gray-600 dark:hover:bg-slate-500 transition-colors"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -122,12 +122,12 @@ export function NonNegotiables({ nonNegotiables, isEditMode, onUpdate }: NonNego
                   type="text"
                   value={item}
                   onChange={(e) => updateItem(index, e.target.value)}
-                  className="flex-1 p-3 border-2 border-gray-200 rounded-xl focus:border-red-500 focus:outline-none text-gray-900 placeholder-gray-400"
+                  className="flex-1 p-3 border-2 border-gray-300 dark:border-slate-600 rounded-xl focus:border-red-500 dark:focus:border-red-400 focus:outline-none bg-white dark:bg-slate-700 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 transition-colors"
                   placeholder="Enter non-negotiable..."
                 />
                 <motion.button
                   onClick={() => removeItem(index)}
-                  className="p-2 text-red-500 hover:bg-red-50 rounded-lg transition-colors"
+                  className="p-2 text-red-500 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/30 rounded-lg transition-colors"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                 >
@@ -138,12 +138,12 @@ export function NonNegotiables({ nonNegotiables, isEditMode, onUpdate }: NonNego
             
             <motion.button
               onClick={addItem}
-              className="flex items-center gap-2 px-4 py-3 border-2 border-dashed border-gray-300 rounded-xl hover:border-red-500 hover:bg-red-50 transition-colors w-full justify-center"
+              className="flex items-center gap-2 px-4 py-3 border-2 border-dashed border-gray-300 dark:border-slate-600 rounded-xl hover:border-red-500 dark:hover:border-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors w-full justify-center"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              <Plus size={20} className="text-red-500" />
-              <span className="text-red-500 font-medium">Add Non-Negotiable</span>
+              <Plus size={20} className="text-red-500 dark:text-red-400" />
+              <span className="text-red-500 dark:text-red-400 font-medium">Add Non-Negotiable</span>
             </motion.button>
           </motion.div>
         ) : (
@@ -160,10 +160,10 @@ export function NonNegotiables({ nonNegotiables, isEditMode, onUpdate }: NonNego
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-gray-50 p-4 rounded-xl border-l-4 border-red-500 flex items-center gap-4"
+                className="bg-gray-50 dark:bg-slate-700 p-4 rounded-xl border-l-4 border-red-500 dark:border-red-400 flex items-center gap-4 transition-colors"
               >
-                <AlertTriangle className="text-red-500 flex-shrink-0" size={20} />
-                <span className="text-gray-700 font-medium">{item}</span>
+                <AlertTriangle className="text-red-500 dark:text-red-400 flex-shrink-0" size={20} />
+                <span className="text-gray-700 dark:text-gray-200 font-medium">{item}</span>
               </motion.div>
             ))}
           </motion.div>
